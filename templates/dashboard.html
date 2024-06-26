@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	{% if current_user.is_authenticated %}
+	<div class="header">
+		<h1>You are logged in, {{user}}!</h1>
+	</div>
+	<nav>
+		<div class="navigation">
+			<form action="{{ url_for('logout') }}">
+				<button type="submit" class="button">Logout</button>
+			</form>
+		</div>
+	</nav>
+	{% else %}
+	<div class="header">
+		<h1>You are not logged in.</h1>
+	</div>
+	<nav>
+		<div class="navigation">
+			<form action="{{ url_for('login') }}">
+				<button type="submit" class="button">Login</button>
+			</form>
+		</div>
+	</nav>
+	{% endif %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register an Account</title>
+  <!---Custom CSS File--->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="form">
+      <header>Signup</header>
+      <form action="#" method="post">
+        <input type="text" class="username" name="username" placeholder="Enter a username" required>
+        <input type="password" class="password" name="password" placeholder="Create a password" required>
+        <button type="submit" class="button">Signup</button>
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+          <a href="{{ url_for('login') }}">Login</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
