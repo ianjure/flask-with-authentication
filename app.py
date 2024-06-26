@@ -53,8 +53,6 @@ def login():
             session["user"] = name
             login_user(user)
             return redirect(url_for("dashboard"))
-        else:
-            return redirect(url_for("error"))
     return render_template("login.html")
 
 @app.route('/signup', methods=["GET", "POST"])
