@@ -33,12 +33,12 @@ def loader_user(user_id):
 # Routes
 @app.route("/")
 def home():
-	return redirect(url_for("login"))
+	return redirect(url_for("dashboard"))
 
 @app.route("/dashboard")
 def dashboard():
-    if "user" in session:
-        user = session["user"]
+	if "user" in session:
+		user = session["user"]
         name = str(user).title()
         return render_template("dashboard.html", user=name)
     else:
@@ -46,14 +46,18 @@ def dashboard():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
+	if request.method == "POST":
         user = Users.query.filter_by(username=request.form.get("username")).first()
-        if user.password == request.form.get("password"):
-            name = request.form.get("username")
-            session["user"] = name
-            login_user(user)
-            return redirect(url_for("dashboard"))
-    return render_template("login.html")
+		# CHECK IF USER IS IN THE DATABASE
+		if user is None:
+        	return redirect(url_for("login"))
+        else:
+			if user.password == request.form.get("password"):
+	        	name = request.form.get("username")
+	        	session["user"] = name
+	        	login_user(user)
+	        	return redirect(url_for("dashboard"))
+	return render_template("login.html")
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
