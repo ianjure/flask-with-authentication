@@ -7,3 +7,4 @@ requests==2.31.0
 SQLAlchemy==2.0.25
 uritemplate==4.1.1
 Gunicorn
+psycopg2
