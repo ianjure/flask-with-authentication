@@ -31,6 +31,10 @@ def loader_user(user_id):
 	return Users.query.get(user_id)
 
 # Routes
+@app.route("/")
+def home():
+	return redirect(url_for("login"))
+
 @app.route("/dashboard")
 def dashboard():
     if "user" in session:
